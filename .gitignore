@@ -1,0 +1,6 @@
+.vscode/settings.json
+dist/
+build/
+*.spec
+*.dmg
+icon.icns
