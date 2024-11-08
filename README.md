@@ -28,7 +28,7 @@ HoloSim divides the holography system setup into six main steps, each correspond
    ```
 
 2. **Install Dependencies**  
-   HoloSim requires Python 3.x and the following packages:
+   HoloSim requires Python 3.11.7 and the following packages:
    ```bash
    pip install numpy matplotlib scipy Pillow pymupdf tk
    ```
