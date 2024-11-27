@@ -508,9 +508,9 @@ def calculate_and_display_step5():
         step5_text_items.clear()
 
         # Display the new results and store the item IDs in the list
-        step5_text_items.append(canvas.create_text(555.0, 528.0, anchor="nw", text=f"{theta_point:.2f} deg", fill="#000000", font=("Inter Medium", 14)))
-        step5_text_items.append(canvas.create_text(555.0, 552.0, anchor="nw", text=f"{N_row:.2f}", fill="#000000", font=("Inter Medium", 14)))
-        step5_text_items.append(canvas.create_text(555.0, 575.0, anchor="nw", text=f"{SNR:.2f} dB", fill="#000000", font=("Inter Medium", 14)))
+        step5_text_items.append(canvas.create_text(575.0, 528.0, anchor="nw", text=f"{theta_point:.2f} deg", fill="#000000", font=("Inter Medium", 14)))
+        step5_text_items.append(canvas.create_text(575.0, 555.0, anchor="nw", text=f"{N_row:.2f}", fill="#000000", font=("Inter Medium", 14)))
+        step5_text_items.append(canvas.create_text(575.0, 580.0, anchor="nw", text=f"{SNR:.2f} dB", fill="#000000", font=("Inter Medium", 14)))
 
     except ValueError:
         # Show a warning message if inputs are invalid
@@ -701,7 +701,9 @@ image_step4_outputs = load_and_display_image(canvas, "step4_outputs.png", 100.0,
 
 # Step 5 latex
 image_small_delta_z = load_and_display_image(canvas, "small_delta_z.png", 621.0, 490.0)
-image_Theta_Point_less = load_and_display_image(canvas, "Theta_Point_less.png", 545.0, 528.0)
+image_Theta_Point_less = load_and_display_image(canvas, "Theta_Point_less.png", 540.0, 538.0)
+image_N_Row_Eq = load_and_display_image(canvas, "N_Row_Eq.png", 535.0, 563.0)
+image_SNR_Less = load_and_display_image(canvas, "SNR_Less.png", 534.0, 588.0)
 
 # Step 6 latex
 image_D_t = load_and_display_image(canvas, "D_t.png", 1000.0, 491.0)
