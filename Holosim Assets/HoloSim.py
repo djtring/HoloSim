@@ -711,7 +711,7 @@ image_SNR_Less = load_and_display_image(canvas, "SNR_Less.png", 534.0, 588.0)
 # Step 6 latex
 image_D_t = load_and_display_image(canvas, "D_t.png", 1000.0, 491.0)
 image_T_sys = load_and_display_image(canvas, "T_sys.png", 997.0, 530.0)
-image_Z_Final = load_and_display_image(canvas, "Z_Final.png", 975.0, 509.0)     #1000.0, 509.0
+image_Z_Final = load_and_display_image(canvas, "Z_Final.png", 975.0, 510.0)     #1000.0, 509.0
 image_B = load_and_display_image(canvas, "B.png", 990.0, 551.0)
 
 # Calculate all portion's latex
