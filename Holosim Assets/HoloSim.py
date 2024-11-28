@@ -629,7 +629,7 @@ def display_inputs():
             {"value": entry_2.get().strip(), "unit": "m", "x": 60.0, "y": 810.0},
             {"value": entry_5.get().strip(), "unit": "GHz", "x": 60.0, "y": 840.0},
             {"value": entry_1.get().strip(), "unit": "m", "x": 60.0, "y": 870.0},
-            {"value": entry_3.get().strip(), "unit": "", "x": 60.0, "y": 905.0},
+            {"value": entry_3.get().strip(), "unit": "", "x": 60.0, "y": 900.0},
             {"value": entry_6.get().strip(), "unit": "", "x": 210.0, "y": 810.0},
             {"value": entry_7.get().strip(), "unit": "", "x": 210.0, "y": 840.0},
             {"value": entry_19.get().strip(), "unit": "arc/sec", "x": 210.0, "y": 875.0},
