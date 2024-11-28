@@ -429,8 +429,8 @@ def calculate_and_display_step3():
         step3_text_items.clear()
 
         # Display the results on the canvas to the right of the "=" symbol
-        step3_text_items.append(canvas.create_text(950.0, 240.0, anchor="nw", text=f"{t_int:.2f} s", fill="#000000", font=("Inter SemiBold", 13)))
-        step3_text_items.append(canvas.create_text(950.0, 265.0, anchor="nw", text=f"{t_map:.2f} hr", fill="#000000", font=("Inter SemiBold", 13)))
+        step3_text_items.append(canvas.create_text(1010.0, 250.0, anchor="nw", text=f"{t_int:.2f} s", fill="#000000", font=("Inter SemiBold", 13)))
+        step3_text_items.append(canvas.create_text(1010.0, 275.0, anchor="nw", text=f"{t_map:.2f} hr", fill="#000000", font=("Inter SemiBold", 13)))
 
     except ValueError:
         # Show a warning message if the input is invalid
@@ -629,7 +629,7 @@ def display_inputs():
             {"value": entry_3.get().strip(), "unit": "", "x": 60.0, "y": 905.0},
             {"value": entry_6.get().strip(), "unit": "", "x": 210.0, "y": 810.0},
             {"value": entry_7.get().strip(), "unit": "", "x": 210.0, "y": 840.0},
-            {"value": entry_19.get().strip(), "unit": "sec", "x": 210.0, "y": 875.0},
+            {"value": entry_19.get().strip(), "unit": "arc/sec", "x": 210.0, "y": 875.0},
             {"value": entry_12.get().strip(), "unit": "", "x": 210.0, "y": 903.0},
             {"value": entry_16.get().strip(), "unit": "μm", "x": 360.0, "y": 810.0},
             {"value": entry_17.get().strip(), "unit": "m", "x": 360.0, "y": 840.0},
@@ -688,12 +688,12 @@ image_a = load_and_display_image(canvas, "a.png", 654.0, 159.0)
 image_small_delt_d = load_and_display_image(canvas, "small_delt_d.png", 550.0, 239.0)
 
 # Step 3 latex
-image_f_1 = load_and_display_image(canvas, "f_1.png", 1008.0, 158.0)
-image_f_apo = load_and_display_image(canvas, "f_apo.png", 1037.0, 178.0)
-image_f_osr = load_and_display_image(canvas, "f_osr.png", 980.0, 203.0)
-image_Theta_dot = load_and_display_image(canvas, "Theta_dot.png", 1018.0, 220.0)
-image_t_int = load_and_display_image(canvas, "t_int.png", 918.0, 250.0)
-image_t_map = load_and_display_image(canvas, "t_map.png", 920.0, 275.0)
+image_f_1 = load_and_display_image(canvas, "f_1.png", 988.0, 158.0)
+image_f_apo = load_and_display_image(canvas, "f_apo.png", 980.0, 178.0)
+image_f_osr = load_and_display_image(canvas, "f_osr.png", 1025.0, 203.0)
+image_Theta_dot = load_and_display_image(canvas, "Theta_dot.png", 998.0, 220.0)
+image_t_int = load_and_display_image(canvas, "t_int.png", 968.0, 260.0)
+image_t_map = load_and_display_image(canvas, "t_map.png", 970.0, 285.0)
 
 # Step 4 latex
 image_f_oss = load_and_display_image(canvas, "f_oss.png", 234.0, 490.0)
@@ -708,7 +708,7 @@ image_SNR_Less = load_and_display_image(canvas, "SNR_Less.png", 534.0, 588.0)
 # Step 6 latex
 image_D_t = load_and_display_image(canvas, "D_t.png", 1000.0, 491.0)
 image_T_sys = load_and_display_image(canvas, "T_sys.png", 997.0, 530.0)
-image_T_R_z = load_and_display_image(canvas, "T_R_z.png", 1000.0, 509.0)
+image_Z_Final = load_and_display_image(canvas, "Z_Final.png", 975.0, 509.0)     #1000.0, 509.0
 image_B = load_and_display_image(canvas, "B.png", 990.0, 551.0)
 
 # Calculate all portion's latex
@@ -749,7 +749,7 @@ image_N_row_equals = load_and_display_image(canvas, "N_row_equals.png", 1035.0, 
 
 image_SNR = load_and_display_image(canvas, "SNR.png", 1031.0, 880.0)
 
-canvas.create_text(1007.0, 895.0, anchor="nw", text="P =", fill="#000000", font=("Inter Medium", 20, "italic"))
+canvas.create_text(1007.0, 895.0, anchor="nw", text="P >", fill="#000000", font=("Inter Medium", 20, "italic"))
 
 def create_text_elements(canvas):
     # Steps 1-6 text
@@ -764,18 +764,17 @@ def create_text_elements(canvas):
     canvas.create_text(770, 150, anchor="nw", text="m", fill="#000000", font=("Inter SemiBold", 14))
     canvas.create_text(570.0, 230.0, anchor="nw", text="< ", fill="#000000", font=("Inter Medium", 15))
 
-    canvas.create_text(830.0, 85.0, anchor="nw", text="Step 3: Grid Point Integration Time and", fill="#000000", font=("Inter Medium", 20))
-    canvas.create_text(930, 110, anchor="nw", text="Total Map Time", fill="#000000", font=("Inter Medium", 20))
-    canvas.create_text(840.0, 150.0, anchor="nw", text="Primary beam taper factor      : ", fill="#000000", font=("Inter SemiBold", 13))
-    canvas.create_text(840.0, 170.0, anchor="nw", text="Apodization smoothing factor          :", fill="#000000", font=("Inter SemiBold", 13))
-    canvas.create_text(840.0, 193.0, anchor="nw", text="Oversampling factor         :", fill="#000000", font=("Inter SemiBold", 13))
-    canvas.create_text(840.0, 215.0, anchor="nw", text="Rotation rate of the antenna     :", fill="#000000", font=("Inter SemiBold", 13))
-    canvas.create_text(1160, 215.0, anchor="nw", text="sec", fill="#000000", font=("Inter SemiBold", 13))
+    canvas.create_text(830.0, 100.0, anchor="nw", text="Step 3: Grid Pt. Int. Time and Map Time", fill="#000000", font=("Inter Medium", 20))
+    canvas.create_text(820.0, 150.0, anchor="nw", text="Primary beam taper factor      : ", fill="#000000", font=("Inter SemiBold", 13))
+    canvas.create_text(820.0, 170.0, anchor="nw", text="Apodization smoothing          :", fill="#000000", font=("Inter SemiBold", 13))
+    canvas.create_text(820.0, 193.0, anchor="nw", text="Oversampling factor btwn rows        :", fill="#000000", font=("Inter SemiBold", 13))
+    canvas.create_text(820.0, 215.0, anchor="nw", text="Rotation rate of the antenna     :", fill="#000000", font=("Inter SemiBold", 13))
+    canvas.create_text(1145, 215.0, anchor="nw", text="arc/sec", fill="#000000", font=("Inter SemiBold", 13))
 
     canvas.create_text(45.0, 410.0, anchor="nw", text="Step 4: Map Angular Extent and", fill="#000000", font=("Inter Medium", 20))
     canvas.create_text(105, 435, anchor="nw", text="Sampling Intervals", fill="#000000", font=("Inter Medium", 20))
     canvas.create_text(20.0, 480.0, anchor="nw", text="Oversampling factor along row        :", fill="#000000", font=("Inter SemiBold", 14))
-    canvas.create_text(355, 480, anchor="nw", text="sec", fill="#000000", font=("Inter SemiBold", 14))
+    
 
     canvas.create_text(460.0, 410.0, anchor="nw", text="Step 5: Pointing Accuracy and", fill="#000000", font=("Inter Medium", 20))
     canvas.create_text(520, 435, anchor = 'nw', text= "SNR Requirement", fill="#000000", font=("Inter Medium", 20))
@@ -787,13 +786,13 @@ def create_text_elements(canvas):
     canvas.create_text(1140, 482.0, anchor="nw", text="m", fill="#000000", font=("Inter SemiBold", 14))
     canvas.create_text(850.0, 500.0, anchor="nw", text="Distance between", fill="#000000", font=("Inter SemiBold", 14))
     canvas.create_text(1140, 500.0, anchor="nw", text="m", fill="#000000", font=("Inter SemiBold", 14))
-    canvas.create_text(1030.0, 500.0, anchor="nw", text=":", fill="#000000", font=("Inter SemiBold", 14))
+    canvas.create_text(980.0, 500.0, anchor="nw", text=" :", fill="#000000", font=("Inter SemiBold", 14))
     canvas.create_text(850.0, 520.0, anchor="nw", text="System temperature        : ", fill="#000000", font=("Inter SemiBold", 14))
     canvas.create_text(1140, 520.0, anchor="nw", text="K", fill="#000000", font=("Inter SemiBold", 14))
     canvas.create_text(847.0, 542.0, anchor="nw", text=" Detector Bandwidth     :", fill="#000000", font=("Inter SemiBold", 14))
     canvas.create_text(1140, 542.0, anchor="nw", text="MHz", fill="#000000", font=("Inter SemiBold", 14))
     canvas.create_text(930.0, 600.0, anchor="nw", text="P", fill="#000000", font=("Inter SemiBold", 15, "italic"))
-    canvas.create_text(940.0, 600.0, anchor="nw", text=" = ", fill="#000000", font=("Inter SemiBold", 15))
+    canvas.create_text(940.0, 600.0, anchor="nw", text=" > ", fill="#000000", font=("Inter SemiBold", 15))
 
 
 # Call the function to create text elements
@@ -805,18 +804,18 @@ entry_1 = create_entry(canvas, "entry_1.png", 715.0, 160.0, 85.0, 15.0)
 entry_image_2 = load_and_display_image(canvas, "entry_2.png", 265.0, 158.0)
 entry_2 = create_entry(canvas, "entry_2.png", 265.0, 158.0, 78.0, 16.0)
 
-entry_image_3 = load_and_display_image(canvas, "entry_3.png", 1110.0, 156.5)
-entry_3 = create_entry(canvas, "entry_3.png", 1110.0, 156.5, 77.0, 17.0)
+entry_image_3 = load_and_display_image(canvas, "entry_3.png", 1095.0, 156.5)
+entry_3 = create_entry(canvas, "entry_3.png", 1095.0, 156.5, 77.0, 17.0)
 
 entry_image_5 = load_and_display_image(canvas, "entry_5.png", 265.0, 180.0)
 entry_5 = create_entry(canvas, "entry_5.png", 265.0, 180.0, 77.0, 17.0)
 
-entry_image_6 = load_and_display_image(canvas, "entry_6.png", 1110.0, 180.0)
-entry_6 = create_entry(canvas, "entry_6.png", 1110.0, 180.0, 78.0, 16.0)
+entry_image_6 = load_and_display_image(canvas, "entry_6.png", 1095.0, 180.0)
+entry_6 = create_entry(canvas, "entry_6.png", 1095.0, 180.0, 78.0, 16.0)
 entry_6.insert(0, "1.3")  # Sets the default value to 1.3 on startup
 
-entry_image_7 = load_and_display_image(canvas, "entry_7.png", 1110.0, 202.0)
-entry_7 = create_entry(canvas, "entry_7.png", 1110.0, 202.0, 77.0, 17.0)
+entry_image_7 = load_and_display_image(canvas, "entry_7.png", 1095.0, 202.0)
+entry_7 = create_entry(canvas, "entry_7.png", 1095.0, 202.0, 77.0, 17.0)
 
 entry_image_8 = load_and_display_image(canvas, "entry_8.png", 1090.0, 510.5)
 entry_8 = create_entry(canvas, "entry_8.png", 1090.0, 510.5, 77.0, 17.0)
@@ -836,8 +835,8 @@ entry_16 = create_entry(canvas, "entry_16.png", 690.0, 490.0, 77.0, 17.0)
 entry_image_17 = load_and_display_image(canvas, "entry_17.png", 1090.0, 490.0)
 entry_17 = create_entry(canvas, "entry_17.png", 1090.0, 490.0, 77.0, 17.0)
 
-entry_image_19 = load_and_display_image(canvas, "entry_19.png", 1110.0, 224.0)
-entry_19 = create_entry(canvas, "entry_19.png", 1110.0, 224.0, 78.0, 16.0)
+entry_image_19 = load_and_display_image(canvas, "entry_19.png", 1095.0, 224.0)
+entry_19 = create_entry(canvas, "entry_19.png", 1095.0, 224.0, 78.0, 16.0)
 
 
 button_image_1 = PhotoImage(file=relative_to_assets("button1.png"))
@@ -870,7 +869,7 @@ button_7.place(x=940.0, y=630.0, width=135, height=50)
 
 Guide_Button_image = PhotoImage(file=relative_to_assets("Massive_Help_Button.png"))
 Guide_Button = Button(image=Guide_Button_image, borderwidth=0, highlightthickness=0, command=open_help_window, relief="flat")
-Guide_Button.place(x=1050.0, y=20.0, width=141, height=36)
+Guide_Button.place(x=1050.0, y=20.0, width=140, height=36)
 
 button_image_14 = PhotoImage(file=relative_to_assets("button_14.png")) # help button 1 
 button_14 = Button(image=button_image_14,borderwidth=0,highlightthickness=0,command=open_Reference_Window, relief="flat")
