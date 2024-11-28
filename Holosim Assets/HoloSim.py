@@ -767,7 +767,8 @@ def create_text_elements(canvas):
     canvas.create_text(770, 150, anchor="nw", text="m", fill="#000000", font=("Inter SemiBold", 14))
     canvas.create_text(570.0, 230.0, anchor="nw", text="< ", fill="#000000", font=("Inter Medium", 15))
 
-    canvas.create_text(830.0, 100.0, anchor="nw", text="Step 3: Grid Pt. Int. Time and Map Time", fill="#000000", font=("Inter Medium", 20))
+    canvas.create_text(830.0, 85.0, anchor="nw", text="Step 3: Grid Point Integration Time and", fill="#000000", font=("Inter Medium", 20))
+    canvas.create_text(930, 110, anchor="nw", text="Total Map Time", fill="#000000", font=("Inter Medium", 20))
     canvas.create_text(820.0, 150.0, anchor="nw", text="Primary beam taper factor      : ", fill="#000000", font=("Inter SemiBold", 13))
     canvas.create_text(820.0, 170.0, anchor="nw", text="Apodization smoothing          :", fill="#000000", font=("Inter SemiBold", 13))
     canvas.create_text(820.0, 193.0, anchor="nw", text="Oversampling factor btwn rows        :", fill="#000000", font=("Inter SemiBold", 13))
