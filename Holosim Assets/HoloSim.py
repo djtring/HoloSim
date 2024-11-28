@@ -135,63 +135,59 @@ def calculate_step5(delta_d):
         messagebox.showerror("Input Error", "Please enter valid numbers or check previous step.")
         return None, None, None
 
-def calculate_step6():
+def calculate_step6(SNR):
     try:
         # Retrieve inputs from entry boxes
-        D_t = float(entry_17.get().strip())  # Transmitter diameter
-        D = float(entry_2.get().strip())     # Diameter from Step 1 (used as Receiver diameter)
-        z = float(entry_8.get().strip())     # Distance between transmitter and receiver
-        T_sys = float(entry_9.get().strip()) # System temperature
-        B = float(entry_10.get().strip())    # Bandwidth in MHz
+        D_t = float(entry_17.get().strip())     # Transmitter diameter (m)
+        D = float(entry_2.get().strip())        # Receiver diameter (m)
+        z = float(entry_8.get().strip())        # Distance between transmitter and receiver (m)
+        T_sys = float(entry_9.get().strip())    # System temperature (K)
+        B = float(entry_10.get().strip())       # Bandwidth in MHz
+        nu = float(entry_5.get().strip())       # Frequency in GHz
 
-        # SNR from previous step (or set a default value)
-        SNR = 28.23  # This should match your value from Step 5
+        # Constants
+        k = 1.38e-23        # Boltzmann constant (J/K)
+        G = 33              # Gain (dB)
+        c = 3e8             # Speed of light (m/s)
 
-        # Constants from the paper
-        k = 1.38 * 10**-23  # Boltzmann constant in J/K
-        G = 33              # Gain in dB
+        # Convert units
+        B_hz = B * 1e6      # Bandwidth in Hz
+        nu_hz = nu * 1e9    # Frequency in Hz
+        lam = c / nu_hz     # Wavelength (m)
 
-        # Noise floor
-        noise_floor = 10 * np.log10(k * B * 1e6 * T_sys / 1e-3)
-        print(f"Noise floor: {noise_floor}")
-
-        # Wavelength (lam)
-        lam = 3e8 / (float(entry_5.get()) * 1e9)  # Frequency from Step 1 (GHz)
-        print(f"Wavelength (lambda): {lam}")
+        # Noise floor in dBm
+        noise_floor = 10 * np.log10(k * B_hz * T_sys / 1e-3)
 
         # Beam waist at the transmitter
-        w_0 = D_t / 2                  # Beam waist
-        z_R = np.pi * w_0**2 / lam     # Rayleigh range
-        w_z = w_0 * np.sqrt(1 + (z / z_R)**2)  # Beam radius at the receiver location
-        print(f"Beam waist (w_0): {w_0}, Rayleigh range (z_R): {z_R}, Beam radius (w_z): {w_z}")
+        w_0 = D_t / 2
+        z_R = np.pi * w_0**2 / lam
+        w_z = w_0 * np.sqrt(1 + (z / z_R)**2)
 
-        # Define integrand for the overlap integral
+        # Define the integrand for the overlap integral
         def integrand(r, theta):
-            return r * np.exp(-2 * r**2 / w_z**2)
+            return r * np.exp(-r**2 / w_z**2)
 
         # Calculate the overlap integral over the aperture
         overlap, _ = dblquad(
             integrand,
             0,
-            D / 2,                       # Use D from Step 1
+            D / 2,
             lambda r: 0,
             lambda r: 2 * np.pi
         )
-        print(f"Overlap integral: {overlap}")
 
-        # Calculate beam-coupling efficiency
+        # Total power over the aperture
         total_power = np.pi * w_z**2 / 2
+
+        # Beam-coupling efficiency
         eta = (overlap / total_power)**2
         eta_dB = 10 * np.log10(eta)
-        print(f"Beam-coupling efficiency (η): {eta}, Beam-coupling efficiency in dB (η_dB): {eta_dB}")
 
         # Calculate transmitter output power in dBm
-        P_dB = noise_floor + SNR - eta_dB + G
-        print(f"Transmitter output power (P_dB): {P_dB}")
+        P_dB = noise_floor + SNR + eta_dB + G
 
         # Convert to watts
         P = 1e-3 * 10**(P_dB / 10)
-        print(f"Transmitter output power: {P} W")
 
         return P
 
@@ -280,7 +276,7 @@ def calculate_all_steps():
         B = float(B_input)
 
         # Step 6 calculations (transmitter output power)
-        transmitter_power = calculate_step6()
+        transmitter_power = calculate_step6(SNR)
 
         # Clear previous results if they exist
         canvas.delete("results")
@@ -484,7 +480,6 @@ def calculate_and_display_step4():
             "Please enter valid numerical values for frequency (ν), D, and f_oss in Step 4."
         )
 
-
 step5_text_items = []
 def calculate_and_display_step5():
     global step5_text_items
@@ -512,21 +507,29 @@ def calculate_and_display_step5():
         step5_text_items.append(canvas.create_text(575.0, 555.0, anchor="nw", text=f"{N_row:.2f}", fill="#000000", font=("Inter Medium", 14)))
         step5_text_items.append(canvas.create_text(575.0, 580.0, anchor="nw", text=f"{SNR:.2f} dB", fill="#000000", font=("Inter Medium", 14)))
 
+        return SNR  # Return SNR so it can be used in Step 6
+
     except ValueError:
         # Show a warning message if inputs are invalid
         messagebox.showwarning(
             "Input Error",
             "Please enter a valid numerical value for delta_z in Step 5."
         )
-
+        return None  # Return None if there was an error
 
 step6_text_items = []
 def calculate_and_display_step6():
     global step6_text_items
 
     try:
-        # Perform the Step 6 calculation using the updated calculate_step6 function
-        result = calculate_step6()
+        # First, calculate Step 5 to get SNR
+        SNR = calculate_and_display_step5()
+        if SNR is None:
+            # If SNR couldn't be calculated, stop the execution
+            return
+
+        # Perform the Step 6 calculation using SNR
+        result = calculate_step6(SNR)
 
         # Ensure result is valid
         if result is None:
@@ -537,7 +540,7 @@ def calculate_and_display_step6():
             canvas.delete(item)
         step6_text_items.clear()
 
-        # Display the result to the right of the "Transmitter output power = " text
+        # Display the result
         step6_text_items.append(
             canvas.create_text(
                 960.0, 600.0, anchor="nw", text=f"{result:.4e} W", fill="#000000", font=("Inter Medium", 14)
