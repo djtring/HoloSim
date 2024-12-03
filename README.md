@@ -16,7 +16,7 @@ HoloSim divides the holography system setup into six main steps, each correspond
 ### Additional Features
 - **User Interface:** A simple UI guides users through parameter selection and system setup with theoretical recommendations and visual feedback.
 - **Theoretical Raster Scanning Simulation:** Simulates raster scanning in a theoretical context, allowing users to evaluate and refine their measurement setups.
-- **Graphing and Visualization:** Enables comparisons of different parameter choices and the resulting impacts on measurement accuracy.
+
 
 ## Installation
 
@@ -45,7 +45,7 @@ HoloSim divides the holography system setup into six main steps, each correspond
    python holosim.py
    ```
 
-### Option 2: Use the Executable (macOS/Linux)
+### Option 2: Use the Executable (macOS/Linux) 
 
 For convenience, an executable file is provided for macOS and Linux users.
 
