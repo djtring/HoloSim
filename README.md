@@ -67,4 +67,4 @@ For convenience, an executable file is provided for macOS and Linux users.
 
 ## Future Plans
 
-Future updates will extend HoloSim to support direct measurement and post-processing of near-field holography data, addressing additional errors inherent in near-field measurements. The goal is to establish a more standardized, adaptable approach for holographic antenna measurement across different applications.
+Future updates will extend HoloSim to support direct measurement and post-processing of near-field holography data, addressing additional errors inherent in near-field measurements. The goal is to establish a more standardized, adaptable approach for holographic antenna measurement across different applications. A Windows version of HoloSim will also be added in near future, enabling Windows OS users to utlize the tool.  
