@@ -109,5 +109,66 @@ class Calculator:
         except ValueError:
             messagebox.showerror("Input Error", "Please enter valid numbers or check previous step.")
             return None, None, None
+        
+    def calculate_step6(SNR):
+         try:
+            # Retrieve inputs from entry boxes
+            D_t = float(entry_17.get().strip())     # Transmitter diameter (m)
+            D = float(entry_2.get().strip())        # Receiver diameter (m)
+            z = float(entry_8.get().strip())        # Distance between transmitter and receiver (m)
+            T_sys = float(entry_9.get().strip())    # System temperature (K)
+            B = float(entry_10.get().strip())       # Bandwidth in MHz
+            nu = float(entry_5.get().strip())       # Frequency in GHz
+
+            # Constants
+            k = 1.38e-23        # Boltzmann constant (J/K)
+            G = 33              # Gain (dB)
+            c = 3e8             # Speed of light (m/s)
+
+            # Convert units
+            B_hz = B * 1e6      # Bandwidth in Hz
+            nu_hz = nu * 1e9    # Frequency in Hz
+            lam = c / nu_hz     # Wavelength (m)
+
+            # Noise floor in dBm
+            noise_floor = 10 * np.log10(k * B_hz * T_sys / 1e-3)
+
+            # Beam waist at the transmitter
+            w_0 = D_t / 2
+            z_R = np.pi * w_0**2 / lam
+            w_z = w_0 * np.sqrt(1 + (z / z_R)**2)
+
+            # Define the integrand for the overlap integral
+            def integrand(r, theta):
+                return r * np.exp(-r**2 / w_z**2)
+
+            # Calculate the overlap integral over the aperture
+            overlap, _ = dblquad(
+                integrand,
+                0,
+                D / 2,
+                lambda r: 0,
+                lambda r: 2 * np.pi
+            )
+
+            # Total power over the aperture
+            total_power = np.pi * w_z**2 / 2
+
+            # Beam-coupling efficiency
+            eta = (overlap / total_power)**2
+            eta_dB = 10 * np.log10(eta)
+
+            # Calculate transmitter output power in dBm
+            P_dB = noise_floor + SNR + eta_dB + G
+
+            # Convert to watts
+            P = 1e-3 * 10**(P_dB / 10)
+
+            return P
+         except ValueError:
+            messagebox.showerror("Input Error", "Please enter valid numbers or check previous step.")
+            return None
+        
+        
 
 
