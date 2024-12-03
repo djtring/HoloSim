@@ -42,7 +42,7 @@ HoloSim divides the holography system setup into six main steps, each correspond
 
 3. **Run the Application**
    ```bash
-   python holosim.py
+   python x.py - split up into classes rn so will prolly be a main file
    ```
 
 ### Option 2: Use the Executable (macOS/Linux) 
