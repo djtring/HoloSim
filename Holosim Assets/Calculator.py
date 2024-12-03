@@ -14,11 +14,11 @@ class Calculator:
         R_react = 0.62 * np.sqrt(D**3 / lam)  # Reactive near-field cutoff in meters
         return R_F, R_min, R_react
     
-    def calculate_steep2(a):
+    def calculate_step2(a):
         delta_d = a * np.sqrt(2) / 2 * 10**2  # Calculate spatial resolution in cm
         return delta_d
     
-    def calculate_stap3(delta_d): 
+    def calculate_step3(delta_d): 
         try: 
             # Retrieve inputs from the correct entry boxes
             D = float(entry_2.get().strip())  # Diameter input (D) in meters
@@ -165,6 +165,7 @@ class Calculator:
             P = 1e-3 * 10**(P_dB / 10)
 
             return P
+         
          except ValueError:
             messagebox.showerror("Input Error", "Please enter valid numbers or check previous step.")
             return None
