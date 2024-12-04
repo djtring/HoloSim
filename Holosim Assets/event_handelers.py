@@ -1,3 +1,8 @@
+# This class acts like a bridge between the GUI and the calculator class. 
+# It handles all the events that are triggered by the user and calls the appropriate methods from the calculator class to calculate the results. 
+# It also handles the exceptions that are raised during the calculation and displays the error message to the user.
+
+
 from tkinter import messagebox
 from calculator import Calculator
 
