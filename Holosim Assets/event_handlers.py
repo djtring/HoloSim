@@ -2,6 +2,7 @@
 # It handles all events triggered by the user. Each method retrieves the necessary input from the GUI,
 # calls the corresponding method from the calculator class to compute results, 
 # and then updates the GUI accordingly.
+#This was a headache to code lol 
 
 import os
 import sys
@@ -14,7 +15,6 @@ class EventHandelers:
         self.calculator = calculator
 
     def open_help_window(self):
-        # Replicates logic from holosim.py's open_help_window()
         base_path = os.path.dirname(__file__)
         pdf_path = os.path.join(base_path, 'Submillimeter_Wave_Holography_for_Large_Dish_Antennas.pdf')
 
@@ -30,15 +30,14 @@ class EventHandelers:
             messagebox.showerror("Error", "Unsupported operating system.")
 
     def open_Reference_Window(self):
-        # Replicates logic from holosim.py's open_Reference_Window()
         base_path = os.path.dirname(__file__)
         pdf_path = os.path.join(base_path, 'HoloSim_Quick_Reference.pdf')
 
         if os.name == 'posix':
             try:
-                if sys.platform == 'darwin':  # macOS
+                if sys.platform == 'darwin':
                     os.system(f'open "{pdf_path}"')
-                else:  # Linux
+                else:
                     os.system(f'xdg-open "{pdf_path}"')
             except Exception as e:
                 messagebox.showerror("Error", f"Could not open reference PDF: {e}")
@@ -68,7 +67,7 @@ class EventHandelers:
             f_1 = float(self.gui.entry_3.get().strip())
             f_apo = float(self.gui.entry_6.get().strip())
             f_osr = float(self.gui.entry_7.get().strip())
-            dtheta = float(self.gui.entry_19.get().strip())  # Rotation rate
+            dtheta = float(self.gui.entry_19.get().strip())
 
             t_int, t_map = self.calculator.calculate_step3(delta_d, D, nu, f_1, f_apo, f_osr, dtheta)
 
@@ -101,13 +100,15 @@ class EventHandelers:
 
             transmitter_power = self.calculator.calculate_step6(SNR, D_t, D, z, T_sys, B, nu)
 
+            # Clear old final results
             self.gui.canvas.delete("results")
 
-            # Display final results from all steps
+            # Display final (all steps) results with "results" tag
             self.gui.display_results(R_F, R_min, R_react, delta_d, t_int, t_map,
                                      theta_ext, theta_b, theta_sr, theta_ss,
                                      theta_point, N_row, SNR, transmitter_power)
 
+            
             self.gui.display_inputs()
 
         except ValueError as e:
@@ -126,12 +127,15 @@ class EventHandelers:
 
             R_F, R_min, R_react = self.calculator.calculate_step1(D, nu)
 
-            self.gui.canvas.delete("results")
-            self.gui.canvas.create_text(145.0, 210.0, anchor="nw", text=f"{R_F:.2f} m", fill="#000000", font=("Inter Medium", 13), tags="results")
-            self.gui.canvas.create_text(145.0, 230.0, anchor="nw", text=f"{R_min:.2f} m", fill="#000000", font=("Inter Medium", 13), tags="results")
-            self.gui.canvas.create_text(145.0, 250.0, anchor="nw", text=f"{R_react:.2f} m", fill="#000000", font=("Inter Medium", 13), tags="results")
+            # Clear previous Step 1 results before showing new ones
+            self.gui.canvas.delete("step1_results")
 
-            self.gui.display_inputs()
+            # Display step 1 results with a unique tag
+            self.gui.canvas.create_text(145.0, 210.0, anchor="nw", text=f"{R_F:.2f} m", fill="#000000", font=("Inter Medium", 13), tags="step1_results")
+            self.gui.canvas.create_text(145.0, 230.0, anchor="nw", text=f"{R_min:.2f} m", fill="#000000", font=("Inter Medium", 13), tags="step1_results")
+            self.gui.canvas.create_text(145.0, 250.0, anchor="nw", text=f"{R_react:.2f} m", fill="#000000", font=("Inter Medium", 13), tags="step1_results")
+
+            # No display_inputs() call here, as requested
 
         except ValueError as e:
             messagebox.showerror("Calculation Error", str(e))
@@ -146,10 +150,13 @@ class EventHandelers:
             a = float(a_input)
             delta_d = self.calculator.calculate_step2(a)
 
-            self.gui.canvas.delete("results")
-            self.gui.canvas.create_text(590.0, 230.0, anchor="nw", text=f"{delta_d:.2f} cm", fill="#000000", font=("Inter Medium", 15), tags="results")
+            # Clear previous Step 2 results
+            self.gui.canvas.delete("step2_results")
 
-            self.gui.display_inputs()
+            # Display step 2 results
+            self.gui.canvas.create_text(590.0, 230.0, anchor="nw", text=f"{delta_d:.2f} cm", fill="#000000", font=("Inter Medium", 15), tags="step2_results")
+
+            # No display_inputs()
 
         except ValueError as e:
             messagebox.showerror("Calculation Error", str(e))
@@ -175,11 +182,13 @@ class EventHandelers:
 
             t_int, t_map = self.calculator.calculate_step3(delta_d, D, nu, f_1, f_apo, f_osr, dtheta)
 
-            self.gui.canvas.delete("results")
-            self.gui.canvas.create_text(1010.0, 250.0, anchor="nw", text=f"{t_int:.2f} s", fill="#000000", font=("Inter SemiBold", 13), tags="results")
-            self.gui.canvas.create_text(1010.0, 275.0, anchor="nw", text=f"{t_map:.2f} hr", fill="#000000", font=("Inter SemiBold", 13), tags="results")
+            # Clear previous Step 3 results
+            self.gui.canvas.delete("step3_results")
 
-            self.gui.display_inputs()
+            self.gui.canvas.create_text(1010.0, 250.0, anchor="nw", text=f"{t_int:.2f} s", fill="#000000", font=("Inter SemiBold", 13), tags="step3_results")
+            self.gui.canvas.create_text(1010.0, 275.0, anchor="nw", text=f"{t_map:.2f} hr", fill="#000000", font=("Inter SemiBold", 13), tags="step3_results")
+
+            # No display_inputs()
 
         except ValueError as e:
             messagebox.showerror("Calculation Error", str(e))
@@ -202,13 +211,15 @@ class EventHandelers:
 
             theta_ext, theta_b, theta_sr, theta_ss = self.calculator.calculate_step4(delta_d, nu, D, f_oss)
 
-            self.gui.canvas.delete("results")
-            self.gui.canvas.create_text(130.0, 520.0, anchor="nw", text=f"{theta_ext:.2f} deg", fill="#000000", font=("Inter Medium", 14), tags="results")
-            self.gui.canvas.create_text(130.0, 543.0, anchor="nw", text=f"{theta_b:.2f} arcsec", fill="#000000", font=("Inter Medium", 14), tags="results")
-            self.gui.canvas.create_text(130.0, 568.0, anchor="nw", text=f"{theta_sr:.2f} arcsec", fill="#000000", font=("Inter Medium", 14), tags="results")
-            self.gui.canvas.create_text(130.0, 590.0, anchor="nw", text=f"{theta_ss:.2f} arcsec", fill="#000000", font=("Inter Medium", 14), tags="results")
+            # Clear previous Step 4 results
+            self.gui.canvas.delete("step4_results")
 
-            self.gui.display_inputs()
+            self.gui.canvas.create_text(130.0, 520.0, anchor="nw", text=f"{theta_ext:.2f} deg", fill="#000000", font=("Inter Medium", 14), tags="step4_results")
+            self.gui.canvas.create_text(130.0, 543.0, anchor="nw", text=f"{theta_b:.2f} arcsec", fill="#000000", font=("Inter Medium", 14), tags="step4_results")
+            self.gui.canvas.create_text(130.0, 568.0, anchor="nw", text=f"{theta_sr:.2f} arcsec", fill="#000000", font=("Inter Medium", 14), tags="step4_results")
+            self.gui.canvas.create_text(130.0, 590.0, anchor="nw", text=f"{theta_ss:.2f} arcsec", fill="#000000", font=("Inter Medium", 14), tags="step4_results")
+
+            # No display_inputs()
 
         except ValueError as e:
             messagebox.showerror("Calculation Error", str(e))
@@ -231,12 +242,14 @@ class EventHandelers:
 
             theta_point, N_row, SNR = self.calculator.calculate_step5(delta_d, delta_z, D, nu, f_apo, f_osr, f_oss)
 
-            self.gui.canvas.delete("results")
-            self.gui.canvas.create_text(575.0, 528.0, anchor="nw", text=f"{theta_point:.2f} deg", fill="#000000", font=("Inter Medium", 14), tags="results")
-            self.gui.canvas.create_text(575.0, 555.0, anchor="nw", text=f"{N_row:.2f}", fill="#000000", font=("Inter Medium", 14), tags="results")
-            self.gui.canvas.create_text(575.0, 580.0, anchor="nw", text=f"{SNR:.2f} dB", fill="#000000", font=("Inter Medium", 14), tags="results")
+            # Clear previous Step 5 results
+            self.gui.canvas.delete("step5_results")
 
-            self.gui.display_inputs()
+            self.gui.canvas.create_text(575.0, 528.0, anchor="nw", text=f"{theta_point:.2f} deg", fill="#000000", font=("Inter Medium", 14), tags="step5_results")
+            self.gui.canvas.create_text(575.0, 555.0, anchor="nw", text=f"{N_row:.2f}", fill="#000000", font=("Inter Medium", 14), tags="step5_results")
+            self.gui.canvas.create_text(575.0, 580.0, anchor="nw", text=f"{SNR:.2f} dB", fill="#000000", font=("Inter Medium", 14), tags="step5_results")
+
+            # No display_inputs()
 
             return SNR
 
@@ -271,10 +284,12 @@ class EventHandelers:
             if result is None:
                 return
 
-            self.gui.canvas.delete("results")
-            self.gui.canvas.create_text(960.0, 600.0, anchor="nw", text=f"{result:.4e} W", fill="#000000", font=("Inter Medium", 14), tags="results")
+            # Clear previous Step 6 results
+            self.gui.canvas.delete("step6_results")
 
-            self.gui.display_inputs()
+            self.gui.canvas.create_text(960.0, 600.0, anchor="nw", text=f"{result:.4e} W", fill="#000000", font=("Inter Medium", 14), tags="step6_results")
+
+            # No display_inputs()
 
         except ValueError as e:
             messagebox.showwarning("Input Error", str(e))

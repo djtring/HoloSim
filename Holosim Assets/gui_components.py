@@ -89,6 +89,7 @@ class GUI:
 
         # Bottom rectangle
         rect = self.canvas.create_rectangle(0.0, 725.0, 1200.0, 976.0, fill="#B6B9C9", outline="")
+        self.canvas.tag_lower(rect)
 
         # Step 1 latex
         image_D = self.load_and_display_image("D.png", 185.0, 159.0)
