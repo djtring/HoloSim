@@ -30,7 +30,7 @@ HoloSim divides the holography system setup into six main steps, each correspond
 2. **Install Dependencies**  
    HoloSim requires Python 3.11.7 and the following packages:
    ```bash
-   pip install numpy matplotlib scipy Pillow pymupdf tk
+   pip install -r requirements.txt
    ```
    Dependencies include:
    - numpy: for numerical computations
@@ -42,29 +42,34 @@ HoloSim divides the holography system setup into six main steps, each correspond
 
 3. **Run the Application**
    ```bash
-   python x.py - split up into classes rn so will prolly be a main file
+   python main.py 
    ```
+   Or just hit the 'run' button in main.py on your IDE for the selected operating system. 
 
-### Option 2: Use the Executable (macOS/Linux) 
+### Option 2: Use the Executable 
 
-For convenience, an executable file is provided for macOS and Linux users.
+For convenience, an executable file is provided for macOS, Linux, and Windows users.
 
-1. **Download the latest release**  
-   Visit the releases section of this repository and download the .exe file suitable for your operating system.
+1. **Download the Latest Release**  
+   Visit the releases section of this repository and download the executable file suitable for your operating system.
 
 2. **Run the Executable**  
-   On macOS or Linux, open your terminal, navigate to the file's directory, and make the file executable:
-   ```bash
-   chmod +x holosim_mac_linux.exe
-   ```
-   
-   Then, run the application with:
-   ```bash
-   ./holosim_mac_linux.exe
-   ```
+   - **macOS/Linux:**
+     1. Open your terminal, navigate to the file's directory, and make the file executable:
+        ```bash
+        chmod +x holosim_mac_linux.exe
+        ```
+     2. Then, run the application with:
+        ```bash
+        ./holosim_mac_linux.exe
+        ```
+     > **Note:** You may need to allow permissions if prompted by your operating system.
 
-   > **Note:** You may need to allow permissions if prompted by your operating system.
+   - **Windows:**
+     1. Locate the downloaded `.exe` file in your file explorer.
+     2. Double-click the executable to run it.
+     > **Tip:** If a security warning appears, click "More info" and then "Run anyway" to proceed.
 
 ## Future Plans
 
-Future updates will extend HoloSim to support direct measurement and post-processing of near-field holography data, addressing additional errors inherent in near-field measurements. The goal is to establish a more standardized, adaptable approach for holographic antenna measurement across different applications. A Windows version of HoloSim will also be added in near future, enabling Windows OS users to utlize the tool.  
+Future updates will extend HoloSim to support direct measurement and post-processing of near-field holography data, addressing additional errors inherent in near-field measurements. The goal is to establish a more standardized, adaptable approach for holographic antenna measurement across different applications. 
