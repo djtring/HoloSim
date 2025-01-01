@@ -2,7 +2,6 @@
 # It handles all events triggered by the user. Each method retrieves the necessary input from the GUI,
 # calls the corresponding method from the calculator class to compute results, 
 # and then updates the GUI accordingly.
-#This was a headache to code lol 
 
 import os
 import sys
