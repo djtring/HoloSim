@@ -17,12 +17,9 @@ class EventHandelers:
         base_path = os.path.dirname(__file__)
         pdf_path = os.path.join(base_path, 'Submillimeter_Wave_Holography_for_Large_Dish_Antennas.pdf')
 
-        if os.name == 'posix':
+        if os.name == 'nt':  # Windows
             try:
-                if sys.platform == 'darwin':  # macOS
-                    os.system(f'open "{pdf_path}"')
-                else:  # Linux
-                    os.system(f'xdg-open "{pdf_path}"')
+                os.startfile(pdf_path)
             except Exception as e:
                 messagebox.showerror("Error", f"Could not open help PDF: {e}")
         else:
@@ -32,12 +29,9 @@ class EventHandelers:
         base_path = os.path.dirname(__file__)
         pdf_path = os.path.join(base_path, 'HoloSim_Quick_Reference.pdf')
 
-        if os.name == 'posix':
+        if os.name == 'nt':  # Windows
             try:
-                if sys.platform == 'darwin':
-                    os.system(f'open "{pdf_path}"')
-                else:
-                    os.system(f'xdg-open "{pdf_path}"')
+                os.startfile(pdf_path)
             except Exception as e:
                 messagebox.showerror("Error", f"Could not open reference PDF: {e}")
         else:
@@ -292,3 +286,5 @@ class EventHandelers:
 
         except ValueError as e:
             messagebox.showwarning("Input Error", str(e))
+
+    print("Running from interpreter:", sys.executable)

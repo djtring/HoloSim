@@ -32,11 +32,11 @@ class GUI:
         # Title text
         self.canvas.create_text(
             13.0,
-            15.0,
+            10.0,
             anchor="nw",
             text="HoloSim.",
             fill="#FFFFFF",
-            font=("Inter", 42, "bold")
+            font=("Inter", 40, "bold")
         )
 
         # Now define helper methods similar to holosim.py but as class methods:
@@ -103,10 +103,10 @@ class GUI:
         image_small_delt_d = self.load_and_display_image("small_delt_d.png", 550.0, 239.0)
 
         # Step 3 latex
-        image_f_1 = self.load_and_display_image("f_1.png", 988.0, 158.0)
-        image_f_apo = self.load_and_display_image("f_apo.png", 980.0, 178.0)
-        image_f_osr = self.load_and_display_image("f_osr.png", 1025.0, 203.0)
-        image_Theta_dot = self.load_and_display_image("Theta_dot.png", 998.0, 220.0)
+        image_f_1 = self.load_and_display_image("f_1.png", 997.0, 160.0)
+        image_f_apo = self.load_and_display_image("f_apo.png", 984.0, 180.0)
+        image_f_osr = self.load_and_display_image("f_osr.png", 1007.0, 202.0)
+        image_Theta_dot = self.load_and_display_image("Theta_dot.png", 1005.0, 223.0)
         image_t_int = self.load_and_display_image("t_int.png", 968.0, 260.0)
         image_t_map = self.load_and_display_image("t_map.png", 970.0, 285.0)
 
@@ -121,10 +121,10 @@ class GUI:
         image_SNR_Less = self.load_and_display_image("SNR_Less.png", 534.0, 588.0)
 
         # Step 6 latex
-        image_D_t = self.load_and_display_image("D_t.png", 1000.0, 491.0)
-        image_T_sys = self.load_and_display_image("T_sys.png", 997.0, 530.0)
-        image_Z_Final = self.load_and_display_image("Z_Final.png", 975.0, 510.0)
-        image_B = self.load_and_display_image("B.png", 990.0, 551.0)
+        image_D_t = self.load_and_display_image("D_t.png", 1005.0, 491.0)
+        image_T_sys = self.load_and_display_image("T_sys.png", 1005.0, 530.0)
+        image_Z_Final = self.load_and_display_image("Z_Final.png", 983.0, 510.0)
+        image_B = self.load_and_display_image("B.png", 1000.0, 551.0)
 
         # inputs latex
         image_Input_D = self.load_and_display_image("Input_D.png", 30.0, 820.0)
@@ -141,9 +141,9 @@ class GUI:
         image_Input_T_sys = self.load_and_display_image("Input_T_sys.png", 330.0, 910.0)
         image_Input_B = self.load_and_display_image("Input_B.png", 445.0, 820.0)
 
-        self.canvas.create_text(10.0, 730.0, anchor="nw", text="Final Parameters", fill="#000000", font=("Inter", 20, "bold"))
-        self.canvas.create_text(15.0, 765.0, anchor="nw", text="Inputs:", fill="#000000", font=("Inter Medium", 17))
-        self.canvas.create_text(570.0, 765.0, anchor="nw", text="Outputs:", fill="#000000", font=("Inter Medium", 17))
+        self.canvas.create_text(12.0, 725.0, anchor="nw", text="Final Parameters", fill="#000000", font=("Inter", 20, "bold"))
+        self.canvas.create_text(15.0, 760.0, anchor="nw", text="Inputs:", fill="#000000", font=("Inter Medium", 17))
+        self.canvas.create_text(570.0, 760.0, anchor="nw", text="Outputs:", fill="#000000", font=("Inter Medium", 17))
 
         # outputs latex
         image_R_min_Equals = self.load_and_display_image("R_min_Equals.png", 607.0, 820.0)
@@ -253,44 +253,44 @@ class GUI:
         self.window.resizable(False, False)
 
     def create_text_elements(self):
-        self.canvas.create_text(55.0, 100.0, anchor="nw", text="Step 1: Transmitter Placement", fill="#000000", font=("Inter Medium", 20))
-        self.canvas.create_text(50.0, 150.0, anchor="nw", text="Aperture Diameter  \n\n", fill="#000000", font=("Inter SemiBold", 14))
-        self.canvas.create_text(315, 150, anchor="nw", text="m", fill="#000000", font=("Inter SemiBold", 14))
-        self.canvas.create_text(50.0, 170.0, anchor="nw", text="Transmitter frequency  ", fill="#000000", font=("Inter SemiBold", 14))
-        self.canvas.create_text(315, 170, anchor="nw", text="GHz", fill="#000000", font=("Inter SemiBold", 14))
+        self.canvas.create_text(25.0, 100.0, anchor="nw", text="Step 1: Transmitter Placement", fill="#000000", font=("Inter Medium", 18))
+        self.canvas.create_text(40.0, 150.0, anchor="nw", text="Aperture Diameter  \n\n", fill="#000000", font=("Inter SemiBold", 12))
+        self.canvas.create_text(315, 150, anchor="nw", text="m", fill="#000000", font=("Inter SemiBold", 12))
+        self.canvas.create_text(40.0, 170.0, anchor="nw", text="Transmitter frequency  ", fill="#000000", font=("Inter SemiBold", 12))
+        self.canvas.create_text(315, 170, anchor="nw", text="GHz", fill="#000000", font=("Inter SemiBold", 12))
 
-        self.canvas.create_text(485.0, 100.0, anchor="nw", text="Step 2: Spatial Resolution   ", fill="#000000", font=("Inter Medium", 20))
-        self.canvas.create_text(420.0, 150.0, anchor="nw", text="Distance between corner adjustors    :", fill="#000000", font=("Inter SemiBold", 14))
-        self.canvas.create_text(770, 150, anchor="nw", text="m", fill="#000000", font=("Inter SemiBold", 14))
+        self.canvas.create_text(460.0, 100.0, anchor="nw", text="Step 2: Spatial Resolution   ", fill="#000000", font=("Inter Medium", 18))
+        self.canvas.create_text(418.0, 150.0, anchor="nw", text="Distance between corner adjustors    :", fill="#000000", font=("Inter SemiBold", 11))
+        self.canvas.create_text(765, 150, anchor="nw", text="m", fill="#000000", font=("Inter SemiBold", 12))
         self.canvas.create_text(570.0, 230.0, anchor="nw", text="< ", fill="#000000", font=("Inter Medium", 15))
 
-        self.canvas.create_text(830.0, 85.0, anchor="nw", text="Step 3: Grid Point Integration Time and", fill="#000000", font=("Inter Medium", 20))
-        self.canvas.create_text(930, 110, anchor="nw", text="Total Map Time", fill="#000000", font=("Inter Medium", 20))
-        self.canvas.create_text(820.0, 150.0, anchor="nw", text="Primary beam taper factor      : ", fill="#000000", font=("Inter SemiBold", 13))
-        self.canvas.create_text(820.0, 170.0, anchor="nw", text="Apodization smoothing          :", fill="#000000", font=("Inter SemiBold", 13))
-        self.canvas.create_text(820.0, 193.0, anchor="nw", text="Oversampling factor btwn rows        :", fill="#000000", font=("Inter SemiBold", 13))
-        self.canvas.create_text(820.0, 215.0, anchor="nw", text="Rotation rate of the antenna     :", fill="#000000", font=("Inter SemiBold", 13))
-        self.canvas.create_text(1145, 215.0, anchor="nw", text="arc/sec", fill="#000000", font=("Inter SemiBold", 13))
+        self.canvas.create_text(825.0, 85.0, anchor="nw", text="Step 3: Grid Point Integration Time and", fill="#000000", font=("Inter Medium", 16))
+        self.canvas.create_text(930, 110, anchor="nw", text="Total Map Time", fill="#000000", font=("Inter Medium", 16))
+        self.canvas.create_text(815.0, 150.0, anchor="nw", text="Primary beam taper factor      : ", fill="#000000", font=("Inter SemiBold", 11))
+        self.canvas.create_text(815.0, 170.0, anchor="nw", text="Apodization smoothing          :", fill="#000000", font=("Inter SemiBold", 11))
+        self.canvas.create_text(815.0, 193.0, anchor="nw", text="Oversampling factor btwn rows        :", fill="#000000", font=("Inter SemiBold", 10))
+        self.canvas.create_text(815.0, 215.0, anchor="nw", text="Rotation rate of the antenna     :", fill="#000000", font=("Inter SemiBold", 11))
+        self.canvas.create_text(1145, 215.0, anchor="nw", text="arc/sec", fill="#000000", font=("Inter SemiBold", 10))
 
-        self.canvas.create_text(45.0, 410.0, anchor="nw", text="Step 4: Map Angular Extent and", fill="#000000", font=("Inter Medium", 20))
-        self.canvas.create_text(105, 435, anchor="nw", text="Sampling Intervals", fill="#000000", font=("Inter Medium", 20))
-        self.canvas.create_text(20.0, 480.0, anchor="nw", text="Oversampling factor along row        :", fill="#000000", font=("Inter SemiBold", 14))
+        self.canvas.create_text(30.0, 410.0, anchor="nw", text="Step 4: Map Angular Extent and", fill="#000000", font=("Inter Medium", 18))
+        self.canvas.create_text(105, 435, anchor="nw", text="Sampling Intervals", fill="#000000", font=("Inter Medium", 18))
+        self.canvas.create_text(20.0, 480.0, anchor="nw", text="Oversampling factor along row        :", fill="#000000", font=("Inter SemiBold", 11))
 
-        self.canvas.create_text(460.0, 410.0, anchor="nw", text="Step 5: Pointing Accuracy and", fill="#000000", font=("Inter Medium", 20))
-        self.canvas.create_text(520, 435, anchor='nw', text="SNR Requirement", fill="#000000", font=("Inter Medium", 20))
-        self.canvas.create_text(463.0, 480.0, anchor="nw", text="Surface deformation       :", fill="#000000", font=("Inter Medium", 15))
-        self.canvas.create_text(740, 480, anchor="nw", text="μm", fill="#000000", font=("Inter Medium", 15))
+        self.canvas.create_text(440.0, 410.0, anchor="nw", text="Step 5: Pointing Accuracy and", fill="#000000", font=("Inter Medium", 18))
+        self.canvas.create_text(508, 435, anchor='nw', text="SNR Requirement", fill="#000000", font=("Inter Medium", 18))
+        self.canvas.create_text(463.0, 480.0, anchor="nw", text="Surface deformation       :", fill="#000000", font=("Inter Medium", 12))
+        self.canvas.create_text(740, 480, anchor="nw", text="μm", fill="#000000", font=("Inter Medium", 12))
 
-        self.canvas.create_text(850.0, 430.0, anchor="nw", text="Step 6: Transmitter output power", fill="#000000", font=("Inter Medium", 20))
-        self.canvas.create_text(850.0, 482.0, anchor="nw", text="Transmitter diameter      : ", fill="#000000", font=("Inter SemiBold", 14))
-        self.canvas.create_text(1140, 482.0, anchor="nw", text="m", fill="#000000", font=("Inter SemiBold", 14))
-        self.canvas.create_text(850.0, 500.0, anchor="nw", text="Distance between", fill="#000000", font=("Inter SemiBold", 14))
-        self.canvas.create_text(1140, 500.0, anchor="nw", text="m", fill="#000000", font=("Inter SemiBold", 14))
-        self.canvas.create_text(980.0, 500.0, anchor="nw", text=" :", fill="#000000", font=("Inter SemiBold", 14))
-        self.canvas.create_text(850.0, 520.0, anchor="nw", text="System temperature        : ", fill="#000000", font=("Inter SemiBold", 14))
-        self.canvas.create_text(1140, 520.0, anchor="nw", text="K", fill="#000000", font=("Inter SemiBold", 14))
-        self.canvas.create_text(847.0, 542.0, anchor="nw", text=" Detector Bandwidth     :", fill="#000000", font=("Inter SemiBold", 14))
-        self.canvas.create_text(1140, 542.0, anchor="nw", text="MHz", fill="#000000", font=("Inter SemiBold", 14))
+        self.canvas.create_text(825.0, 430.0, anchor="nw", text="Step 6: Transmitter output power", fill="#000000", font=("Inter Medium", 18))
+        self.canvas.create_text(850.0, 482.0, anchor="nw", text="Transmitter diameter      : ", fill="#000000", font=("Inter SemiBold", 12))
+        self.canvas.create_text(1140, 482.0, anchor="nw", text="m", fill="#000000", font=("Inter SemiBold", 12))
+        self.canvas.create_text(850.0, 500.0, anchor="nw", text="Distance between", fill="#000000", font=("Inter SemiBold", 12))
+        self.canvas.create_text(1140, 500.0, anchor="nw", text="m", fill="#000000", font=("Inter SemiBold", 12))
+        self.canvas.create_text(987.0, 500.0, anchor="nw", text=" :", fill="#000000", font=("Inter SemiBold", 12))
+        self.canvas.create_text(850.0, 520.0, anchor="nw", text="System temperature        : ", fill="#000000", font=("Inter SemiBold", 12))
+        self.canvas.create_text(1140, 520.0, anchor="nw", text="K", fill="#000000", font=("Inter SemiBold", 12))
+        self.canvas.create_text(847.0, 542.0, anchor="nw", text=" Detector Bandwidth     :", fill="#000000", font=("Inter SemiBold", 12))
+        self.canvas.create_text(1140, 542.0, anchor="nw", text="MHz", fill="#000000", font=("Inter SemiBold", 12))
         self.canvas.create_text(930.0, 600.0, anchor="nw", text="P", fill="#000000", font=("Inter SemiBold", 15, "italic"))
         self.canvas.create_text(940.0, 600.0, anchor="nw", text=" > ", fill="#000000", font=("Inter SemiBold", 15))
 
@@ -299,20 +299,20 @@ class GUI:
                         theta_point, N_row, SNR, transmitter_power):
         self.canvas.delete("results")
 
-        self.canvas.create_text(645.0, 810.0, anchor="nw", text=f"{R_min:.2f} m", fill="#000000", font=("Inter Medium", 15), tags="results")
-        self.canvas.create_text(645, 840, anchor="nw", text=f"{delta_d:.2f} cm", fill="#000000", font=("Inter Medium", 15), tags="results")
-        self.canvas.create_text(645, 870, anchor="nw", text=f"{t_int:.2f} s", fill="#000000", font=("Inter Medium", 15), tags="results")
-        self.canvas.create_text(645, 900, anchor="nw", text=f"{t_map:.2f} hr", fill="#000000", font=("Inter Medium", 15), tags="results")
+        self.canvas.create_text(645.0, 810.0, anchor="nw", text=f"{R_min:.2f} m", fill="#000000", font=("Inter Medium", 12), tags="results")
+        self.canvas.create_text(645, 840, anchor="nw", text=f"{delta_d:.2f} cm", fill="#000000", font=("Inter Medium", 12), tags="results")
+        self.canvas.create_text(645, 870, anchor="nw", text=f"{t_int:.2f} s", fill="#000000", font=("Inter Medium", 12), tags="results")
+        self.canvas.create_text(645, 900, anchor="nw", text=f"{t_map:.2f} hr", fill="#000000", font=("Inter Medium", 12), tags="results")
 
-        self.canvas.create_text(860, 810, anchor="nw", text=f"{theta_ext:.2f} deg", fill="#000000", font=("Inter Medium", 15), tags="results")
-        self.canvas.create_text(860, 840, anchor="nw", text=f"{theta_b:.2f} arcsec", fill="#000000", font=("Inter Medium", 15), tags="results")
-        self.canvas.create_text(860, 870, anchor="nw", text=f"{theta_sr:.2f} arcsec", fill="#000000", font=("Inter Medium", 15), tags="results")
-        self.canvas.create_text(860, 900, anchor="nw", text=f"{theta_ss:.2f} arcsec", fill="#000000", font=("Inter Medium", 15), tags="results")
+        self.canvas.create_text(860, 810, anchor="nw", text=f"{theta_ext:.2f} deg", fill="#000000", font=("Inter Medium", 12), tags="results")
+        self.canvas.create_text(860, 840, anchor="nw", text=f"{theta_b:.2f} arcsec", fill="#000000", font=("Inter Medium", 12), tags="results")
+        self.canvas.create_text(860, 870, anchor="nw", text=f"{theta_sr:.2f} arcsec", fill="#000000", font=("Inter Medium", 12), tags="results")
+        self.canvas.create_text(860, 900, anchor="nw", text=f"{theta_ss:.2f} arcsec", fill="#000000", font=("Inter Medium", 12), tags="results")
 
-        self.canvas.create_text(1080, 810, anchor="nw", text=f"{theta_point:.2f} deg", fill="#000000", font=("Inter Medium", 15), tags="results")
-        self.canvas.create_text(1080, 840, anchor="nw", text=f"{N_row:.2f}", fill="#000000", font=("Inter Medium", 15), tags="results")
-        self.canvas.create_text(1080, 870, anchor="nw", text=f"{SNR:.2f} dB", fill="#000000", font=("Inter Medium", 15), tags="results")
-        self.canvas.create_text(1080, 900, anchor="nw", text=f"{transmitter_power:.4e} W", fill="#000000", font=("Inter Medium", 15), tags="results")
+        self.canvas.create_text(1080, 810, anchor="nw", text=f"{theta_point:.2f} deg", fill="#000000", font=("Inter Medium", 12), tags="results")
+        self.canvas.create_text(1080, 840, anchor="nw", text=f"{N_row:.2f}", fill="#000000", font=("Inter Medium", 12), tags="results")
+        self.canvas.create_text(1080, 870, anchor="nw", text=f"{SNR:.2f} dB", fill="#000000", font=("Inter Medium", 12), tags="results")
+        self.canvas.create_text(1080, 900, anchor="nw", text=f"{transmitter_power:.4e} W", fill="#000000", font=("Inter Medium", 12), tags="results")
 
     def display_inputs(self):
         try:
@@ -331,7 +331,7 @@ class GUI:
                 {"value": self.entry_17.get().strip(), "unit": "m", "x": 360.0, "y": 840.0},
                 {"value": self.entry_8.get().strip(), "unit": "m", "x": 360.0, "y": 870.0},
                 {"value": self.entry_9.get().strip(), "unit": "K", "x": 360.0, "y": 900.0},
-                {"value": self.entry_10.get().strip(), "unit": "MHz", "x": 475.0, "y": 810.0},
+                {"value": self.entry_10.get().strip(), "unit": "MHz", "x": 470.0, "y": 810.0},
             ]
 
             print("Displaying inputs:")
@@ -345,7 +345,7 @@ class GUI:
                     print(f"Warning: Empty input detected at coordinates ({x}, {y})")
 
                 text = f"{value_str} {unit}".strip()
-                self.canvas.create_text(x, y, anchor="nw", text=text, fill="#000000", font=("Inter Medium", 15), tags="inputs")
+                self.canvas.create_text(x, y, anchor="nw", text=text, fill="#000000", font=("Inter Medium", 12), tags="inputs")
                 print(f"Displayed: '{text}' at ({x}, {y})")
 
         except Exception as e:
