@@ -44,7 +44,7 @@ HoloSim divides the holography system setup into six main steps, each correspond
    ```bash
    python main.py 
    ```
-   Or just hit the 'run' button in main.py on your IDE for the selected operating system. 
+   Or find main.py in your operating systems folder (Both folders are labled) hit the 'run' button in main.py in your IDE for the selected operating system. 
 
 ### Option 2: Use the Executable 
 
