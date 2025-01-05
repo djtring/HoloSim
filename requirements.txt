@@ -2,3 +2,4 @@ Pillow
 numpy
 scipy
 PyMuPDF
+matplotlib

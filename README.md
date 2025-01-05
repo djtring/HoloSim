@@ -55,20 +55,14 @@ For convenience, an executable file is provided for macOS, Linux, and Windows us
 
 2. **Run the Executable**  
    - **macOS/Linux:**
-     1. Open your terminal, navigate to the file's directory, and make the file executable:
-        ```bash
-        chmod +x holosim_mac_linux.exe
-        ```
-     2. Then, run the application with:
-        ```bash
-        ./holosim_mac_linux.exe
-        ```
+     1. Locate the downloaded `.exe` file in your file explorer.
+     2. Double-click the executable to run it.
      > **Note:** You may need to allow permissions if prompted by your operating system.
 
    - **Windows:**
      1. Locate the downloaded `.exe` file in your file explorer.
      2. Double-click the executable to run it.
-     > **Tip:** If a security warning appears, click "More info" and then "Run anyway" to proceed.
+     > **Note:** If a security warning appears, click "More info" and then "Run anyway" to proceed.
 
 ## Future Plans
 
