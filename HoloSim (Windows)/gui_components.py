@@ -18,6 +18,9 @@ class GUI:
         icon_image = PhotoImage(file=self.relative_to_assets("HS_logo.png"))
         self.window.iconphoto(False, icon_image)
 
+        self.window.iconbitmap(self.relative_to_assets("HS_logo.ico"))
+        self.window.update()
+        
         self.canvas = Canvas(
             self.window,
             bg="#808080",
