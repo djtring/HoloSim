@@ -70,6 +70,9 @@ class EventHandelers:
 
             t_int, t_map = self.calculator.calculate_step3(delta_d, D, nu, f_1, f_apo, f_osr, dtheta)
 
+            if not f_1 or f_apo or f_osr or dtheta:
+                raise ValueError("Empty input for step 3")
+
             f_oss_input = self.gui.entry_12.get().strip()
             if not f_oss_input:
                 raise ValueError("Empty input for step 4")
