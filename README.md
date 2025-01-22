@@ -13,11 +13,6 @@ HoloSim divides the holography system setup into six main steps, each correspond
 - Pointing Accuracy and SNR Requirements
 - Transmitter Output Power
 
-### Additional Features
-- **User Interface:** A simple UI guides users through parameter selection and system setup with theoretical recommendations and visual feedback.
-- **Theoretical Raster Scanning Simulation:** Simulates raster scanning in a theoretical context, allowing users to evaluate and refine their measurement setups.
-
-
 ## Installation
 
 ### Option 1: Run from Source
