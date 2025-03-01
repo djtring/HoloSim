@@ -1,6 +1,6 @@
-# holosim_app.py
-
 import tkinter as tk
+import sys
+import os
 from pathlib import Path
 from calculator import Calculator
 from event_handlers import EventHandelers
@@ -11,20 +11,23 @@ class HoloSimApp:
         # Initialize the main Tk window
         self.window = tk.Tk()
 
-        # Determine the output path and assets path based on current file location
-        self.output_path = Path(__file__).resolve().parent
-        self.assets_path = self.output_path
+        # Determine the base path dynamically (Handles both script & .exe mode)
+        if getattr(sys, '_MEIPASS', False):  
+            self.assets_path = Path(sys._MEIPASS) / "assets"
+        else:
+            self.assets_path = Path(__file__).resolve().parent / "assets"
 
         def relative_to_assets(path: str) -> Path:
-            return self.assets_path / Path(path)
+            """ Returns the full path to assets, working for both .py and .exe modes """
+            return self.assets_path / path
 
-        # Create the GUI, Calculator, and EventHandelers instances
+        # Create GUI, Calculator, and EventHandelers instances
         self.gui = GUI(self.window, relative_to_assets)
         self.calculator = Calculator()
         self.handlers = EventHandelers(self.gui, self.calculator)
 
         # Build the GUI and connect buttons to the event handlers
-        # These commands correspond to methods defined in EventHandelers
+
         self.gui.build_gui(
             calculate_all_steps_cmd=self.handlers.calculate_all_steps,
             calculate_and_display_step1_cmd=self.handlers.calculate_and_display_step1,
