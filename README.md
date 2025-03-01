@@ -49,10 +49,14 @@ For convenience, an executable file is provided for macOS, Linux, and Windows us
    Visit the releases section of this repository and download the executable file suitable for your operating system.
 
 2. **Run the Executable**  
-   - **macOS/Linux:**
-     1. Locate the downloaded `.exe` file in your file explorer.
-     2. Double-click the executable to run it.
-     > **Note:** You may need to allow permissions if prompted by your operating system.
+   - **macOS:**
+     1. Locate the downloaded `.dmg` file in your file explorer.
+     2. Double-click the `.dmg` file to open it.
+     3. In the window that appears, drag the app icon to the **Applications** folder.
+     4. Once copied, close the window and eject the `.dmg` by right-clicking it and selecting **Eject**.
+     5. Open the application from **Launchpad** or **Finder > Applications**.
+
+     > **Note:** If macOS prevents the app from opening due to security settings, go to **System Settings > Privacy & Security**, scroll to **Security**, and click **Open Anyway** for the app.
 
    - **Windows:**
      1. Locate the downloaded `.exe` file in your file explorer.
