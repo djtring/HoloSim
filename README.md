@@ -61,4 +61,4 @@ For convenience, an executable file is provided for macOS, Linux, and Windows us
 
 ## Future Plans
 
-Future updates will extend HoloSim to support direct measurement and post-processing of near-field holography data, addressing additional errors inherent in near-field measurements. The goal is to establish a more standardized, adaptable approach for holographic antenna measurement across different applications. 
+Future updates will extend HoloSim to support direct measurement and post-processing of near-field holography data, addressing additional errors inherent in near-field measurements. The goal is to establish a more standardized, adaptable approach for holographic antenna measurement across different applications. If any questions persist, please feel free to reach us at mxa220164@utdallas.edu or dario.tringali@colorado.edu
