@@ -1,9 +1,9 @@
 # HoloSim: Submillimeter-Wave Holography for Large Dish Antennas
 
-![HoloSim Logo](Readme_Images/HS_Logo.png)
-![HoloSim UI](Readme_Images/UI.jpg)
-
 HoloSim is an open-source Python-based tool designed for the systematic development and simulation of near-field holography systems for large dish antennas. This tool helps streamline the design of submillimeter-wave holography setups by providing a theoretical framework and design parameter recommendations for evaluating system performance before physical implementation.
+
+![HoloSim UI](Readme_Images/UI.jpg)
+**HoloSim’s User Interface**
 
 ## Features
 
