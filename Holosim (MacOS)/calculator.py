@@ -1,4 +1,4 @@
-# All mathimatical calculations are pulled from the file "ALMA 3.0" which refrences the ALMA paper. 
+# All mathimatical calculations are pulled from the file "HoloSimBackend.ipynb" 
 
 import numpy as np 
 from scipy.integrate import dblquad
